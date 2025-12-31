@@ -21,7 +21,7 @@ except ImportError:
 os.makedirs(OUT_DIR, exist_ok=True)
 
 def main():
-    print("🔍 Phase 3 literature mining started")
+    print(" Phase 3 literature mining started")
 
     # -------------------------------
     # 1. Load Phase 2 / BBB drug list
@@ -50,11 +50,11 @@ def main():
 
     drugs = sorted(drugs)
 
-    # 🔧 DEBUG / SAFE MODE
-    # Increase to 300–500 once stable
+    #  DEBUG / SAFE MODE
+    # Increase to 300500 once stable
     drugs = drugs[:500]
 
-    print(f"🧪 Running Phase 3 on {len(drugs)} drugs")
+    print(f" Running Phase 3 on {len(drugs)} drugs")
 
     # -------------------------------
     # 2. Literature search (API)
@@ -72,7 +72,7 @@ def main():
                 rows.append(ev)
 
     if not rows:
-        print("⚠️ No AD-relevant evidence extracted. Check gates.")
+        print(" No AD-relevant evidence extracted. Check gates.")
         return
 
     df_papers = pd.DataFrame(rows)
@@ -82,7 +82,7 @@ def main():
         encoding="utf-8"
     )
 
-    print(f"📄 Saved {len(df_papers)} extracted papers")
+    print(f" Saved {len(df_papers)} extracted papers")
 
     # -------------------------------
     # 4. Drug-level aggregation
@@ -107,21 +107,22 @@ def main():
         f.write("Columns explanation:\n")
         f.write("- signed_score: net-positive AD evidence (final rank)\n")
         f.write("- evidence_score: raw summed paper scores\n")
-        f.write("- net_positive: positive − negative papers\n")
+        f.write("- net_positive: positive  negative papers\n")
         f.write("- confidence: robustness proxy (papers + model diversity)\n")
 
-    print("✅ Saved phase3_papers.csv")
-    print("✅ Saved phase3_lit_evidence.csv")
-    print("✅ Saved phase3_report.txt")
+    print(" Saved phase3_papers.csv")
+    print(" Saved phase3_lit_evidence.csv")
+    print(" Saved phase3_report.txt")
 
-    print("\n🏆 Top 10 Phase-3 candidates:")
+    print("\n Top 10 Phase-3 candidates:")
     print(
         df_drugs.head(10)[
             ["drug", "signed_score", "net_positive", "n_papers", "models"]
         ]
     )
 
-    print("\n✅ Phase 3 complete")
+    print("\n Phase 3 complete")
 
 if __name__ == "__main__":
     main()
+

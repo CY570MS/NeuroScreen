@@ -41,7 +41,7 @@ def fetch_drug_papers(drug: str):
         data = r.json()
         papers = data.get("resultList", {}).get("result", [])
     except Exception as e:
-        print(f"⚠️ API error for {drug}: {e}")
+        print(f" API error for {drug}: {e}")
         papers = []
 
     # De-duplicate by PMID/DOI
@@ -65,3 +65,4 @@ def batch_fetch(drugs):
     for drug in tqdm(drugs, desc="Searching Europe PMC"):
         all_papers[drug] = fetch_drug_papers(drug)
     return all_papers
+

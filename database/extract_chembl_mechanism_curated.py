@@ -16,7 +16,7 @@ tables = set(pd.read_sql("SELECT name FROM sqlite_master WHERE type='table';", c
 required = {"drug_mechanism", "molecule_dictionary", "target_dictionary"}
 missing = [t for t in required if t not in tables]
 if missing:
-    raise SystemExit(f"❌ Missing required tables in DB: {missing}")
+    raise SystemExit(f" Missing required tables in DB: {missing}")
 
 dm_cols = table_cols(conn, "drug_mechanism")
 md_cols = table_cols(conn, "molecule_dictionary")
@@ -28,7 +28,7 @@ dm_tid = "tid" if "tid" in dm_cols else None
 dm_action = "action_type" if "action_type" in dm_cols else None
 
 if not dm_mol or not dm_tid:
-    raise SystemExit(f"❌ Can't find molregno/tid in drug_mechanism columns: {dm_cols}")
+    raise SystemExit(f" Can't find molregno/tid in drug_mechanism columns: {dm_cols}")
 
 # molecule_dictionary fields for filtering
 md_mol = "molregno" if "molregno" in md_cols else None
@@ -38,7 +38,7 @@ md_phase = "max_phase" if "max_phase" in md_cols else None
 md_ther = "therapeutic_flag" if "therapeutic_flag" in md_cols else None
 
 if not md_mol or not md_name or not md_phase:
-    raise SystemExit(f"❌ Can't find needed columns in molecule_dictionary: {md_cols}")
+    raise SystemExit(f" Can't find needed columns in molecule_dictionary: {md_cols}")
 
 # target_dictionary fields
 td_tid = "tid" if "tid" in td_cols else None
@@ -46,7 +46,7 @@ td_name = "pref_name" if "pref_name" in td_cols else None
 td_chembl = "target_chembl_id" if "target_chembl_id" in td_cols else None
 
 if not td_tid:
-    raise SystemExit(f"❌ Can't find tid in target_dictionary columns: {td_cols}")
+    raise SystemExit(f" Can't find tid in target_dictionary columns: {td_cols}")
 
 # Optional gene symbol mapping via target_components + component_synonyms
 has_tc = "target_components" in tables
@@ -115,6 +115,7 @@ df["target_gene"] = df["target_gene"].fillna("").astype(str)
 df["target_name"] = df["target_name"].fillna("").astype(str)
 
 df.to_csv("chembl_drug_mechanism_curated.csv", index=False)
-print("✅ Saved chembl_drug_mechanism_curated.csv")
+print(" Saved chembl_drug_mechanism_curated.csv")
 print("Rows:", len(df))
 print(df.head(20))
+

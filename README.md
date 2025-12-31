@@ -54,7 +54,7 @@ The pipeline is divided into three distinct phases. Run them in the following or
 Predicts which drugs can cross the blood-brain barrier (BBB) using a Random Forest classifier trained on the B3DB dataset.
 
 ```markdown
-python phase1/predict_bbb_drugs.py
+python phase1/phase1_predict_bbb_drugs.py
 ```
 **Output:** `phase1/outputs/bbb_positive_drugs.csv`
 

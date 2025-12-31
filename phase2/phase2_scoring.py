@@ -19,7 +19,7 @@ def norm_name(x: str) -> str:
     x = re.sub(r"\s+", " ", x).strip()
     return x
 
-print("🚀 Phase 2 v3 scoring started (pathology-focused)")
+print(" Phase 2 v3 scoring started (pathology-focused)")
 
 # --------------------------
 # 1) Load inputs
@@ -37,12 +37,12 @@ for c in ["compound_name", "drug_name", "name"]:
         bbb_name_col = c
         break
 if bbb_name_col is None:
-    raise SystemExit(f"❌ BBB file missing drug name column. Columns: {bbb.columns.tolist()}")
+    raise SystemExit(f" BBB file missing drug name column. Columns: {bbb.columns.tolist()}")
 
 bbb["drug_norm"] = bbb[bbb_name_col].apply(norm_name)
 
 if "drug_name" not in moa.columns:
-    raise SystemExit(f"❌ chembl_drug_mechanism_curated.csv missing drug_name. Columns: {moa.columns.tolist()}")
+    raise SystemExit(f" chembl_drug_mechanism_curated.csv missing drug_name. Columns: {moa.columns.tolist()}")
 
 moa["drug_norm"] = moa["drug_name"].apply(norm_name)
 
@@ -215,7 +215,8 @@ with open("outputs/phase2_report.txt", "w", encoding="utf-8") as f:
     f.write(top.to_string(index=False))
     f.write("\n")
 
-print("✅ Saved phase2_scored_drugs.csv")
-print("✅ Saved phase2_report.txt")
+print(" Saved phase2_scored_drugs.csv")
+print(" Saved phase2_report.txt")
 print("\nTop 30 candidates:")
 print(top)
+

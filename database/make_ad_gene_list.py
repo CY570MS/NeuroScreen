@@ -32,8 +32,8 @@ if gene_table is None:
     with open("harmonizome_ad_page_debug.html", "w", encoding="utf-8") as f:
         f.write(html)
     raise SystemExit(
-        "❌ Could not find a table with a 'Symbol' column.\n"
-        "I saved the downloaded page as harmonizome_ad_page_debug.html — open it and search for 'Symbol'."
+        " Could not find a table with a 'Symbol' column.\n"
+        "I saved the downloaded page as harmonizome_ad_page_debug.html  open it and search for 'Symbol'."
     )
 
 # Standardize column name and extract symbols
@@ -57,6 +57,7 @@ genes = sorted(set(genes))
 df = pd.DataFrame({"gene_symbol": genes})
 df.to_csv("ad_genes_disgenet.csv", index=False)
 
-print("✅ Saved ad_genes_disgenet.csv")
+print(" Saved ad_genes_disgenet.csv")
 print("Gene count:", len(df))
 print(df.head(20))
+

@@ -7,3 +7,4 @@ scikit-learn
 qc-B3DB
 joblib
 sqlite3
+plotly
