@@ -1,4 +1,4 @@
-# 🧠 Alzheimer’s Drug Candidate Prioritization (Hackathon System)
+# 🧠 Alzheimer’s Drug Candidate Prioritization 
 
 This project is an end-to-end **drug candidate prioritization pipeline** for Alzheimer’s disease.  
 It combines:
