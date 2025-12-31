@@ -4,3 +4,5 @@ tqdm
 beautifulsoup4
 lxml
 scikit-learn
+qc-B3DB
+joblib

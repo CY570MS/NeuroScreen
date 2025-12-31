@@ -24,7 +24,7 @@ print("🚀 Phase 2 v3 scoring started (pathology-focused)")
 # --------------------------
 # 1) Load inputs
 # --------------------------
-bbb = pd.read_csv("../database/bbb_positive_drugs.csv")
+bbb = pd.read_csv("../phase1/outputs/bbb_positive_drugs.csv")
 moa = pd.read_csv("../database/chembl_drug_mechanism_curated.csv")
 ad  = pd.read_csv("../database/ad_genes_disgenet.csv")
 
